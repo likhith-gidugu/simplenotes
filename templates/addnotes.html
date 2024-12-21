@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+   
+</head> --> 
+{% extends 'dashboard.html'%}
+{% block addcss %}
+    <link rel="stylesheet" href="{{url_for('static',filename='addnotes.css')}}">
+{% endblock %}
+{% block content %}
+<body>
+   
+    <form action="" onsubmit="return validate()" method="POST">
+        <p><input type='text' name="title" id="title" placeholder="enter title"></p>
+        <p><textarea name="description"  id=""></textarea></p>
+        <p><button>submit</button></p>
+    </form>
+<script>
+    function validate(){
+        let nospacing =document.getElementById('title').value
+        let check=/^[a-zA-Z0-9]+(?:[a-zA-Z0-9\s]+)$/
+        if  ( nospacing=="" || nospacing.length<=3){
+            alert("Minimum four characters are allowed")
+            return false
+        }
+        if(!nospacing.match(check)){
+            alert("sorry no spacing allowed ")
+            return false
+        }
+
+
+
+        return true
+    }
+</script>
+</body>
+{% endblock %}
